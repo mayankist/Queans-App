@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} Queans App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <style>
+        body{
+			text-align: center;
+			padding:2.3% 3% 1% 3%;
+		}
+        .myhead1{
+            margin:5px 20px;
+        }
+		.box1 .col-md-3{
+			padding: 1.5%;
+		}
+		.box2 .col-md-3{
+			padding: 2% 1%;
+		}
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        <!-- <a href="/create"><button>Create</button></a> -->
+        {% block content %} 
+        <form method="post" id="qaForm">
+            <h2 style="font-weight: 1000;">My Queans App</h2>
+            <hr>
+            <div class="row" style="margin-top: 5%;">
+                <div class="col-md-6 col-sm-12" style="text-align: left;">
+                    <div class="card" style="padding: 3%; text-align: justify;">
+                        <!-- <b> Write text context here </b> -->
+                        <textarea name="context" placeholder="Write text context here" style="padding: 3%; text-align: justify;width: 100%;height: 200px;border: none;outline: none;">{{ context }}</textarea>
+                    </div>
+                    <br>
+                    <div class="card" style="padding: 3%; text-align: justify;">
+                        <!-- <b> Ask your question here </b> -->
+                        <textarea name="question" placeholder="Ask your quesion here" style="padding: 3%; text-align: justify;width: 100%;height: 100px;border: none;outline: none;"></textarea>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                    <!-- <a href="javascript:history.back()"><button class="btn btn-primary">Ask again</button></a> -->
+                </div>
+                <div class="col-md-6 col-sm-12" style="overflow-y: scroll; height: 500px;">
+                    {% for qa in question_answers %}
+                    <div class="card" style="padding:3%; text-align: justify;">
+                        {% if answer %}
+                        <h6 style="margin-bottom: 10px;">{{ qa.question }} </h6>
+                        <h6 style="font-weight: 400;">{{ qa.answer.answer }}</h6> 
+                        <br>
+                        <h6 style="font-size: 12px;"><b>Accuracy</b> : {{ qa.answer.score }} / 10</h6>
+                        {% else %}
+                        <h6 style="color:red;">Answer not available</h6>
+                        {% endif %}
+                        <!-- <h6 style="font-size: 10px;">Score : {{ answer.score }}</h6> -->
+                    </div>
+                    <br>
+                    {% endfor %}
+                </div>
+            </div>
+        </form>
+
+        {% endblock %}
+    </div>
+</body>
+<script>
+    // JavaScript to trigger form submission on Enter key press within textarea
+    document.addEventListener("DOMContentLoaded", function () {
+        var textarea = document.querySelector("textarea[name='question']");
+        var form = document.getElementById("qaForm");
+    
+        textarea.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault(); // Prevent the default Enter key behavior (new line)
+                form.submit(); // Submit the form
+            }
+        });
+    });
+</script>
+</html>

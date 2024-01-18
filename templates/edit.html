@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Edit task {{tasks.id}} {% endblock %}</h1>
+    <form action="/update/{{tasks.id}}" method="POST">
+        <p>
+            <label for="taskname">Task Name</label>
+            <input type="text" name="taskname"
+                   placeholder="Task name" value="{{tasks.taskname}}">
+            </input>
+        </p>
+
+        <p>
+            <label for="recipient">Recipient</label>
+            <input type="text" name="recipient"
+                   placeholder="Recipient name" value="{{tasks.recipient}}">
+            </input>
+        </p>
+        <p>
+            <button type="submit">Update</button>
+        </p>
+    </form>
+{% endblock %}

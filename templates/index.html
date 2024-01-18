@@ -1,0 +1,228 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+	<h5>Solution</h5>
+	<h6>{{ answer }}</h6>
+</div>
+
+<!-- <center><h1 style="font-weight: 700;color:rgb(80,80,100,1);">MY WEATHER APP <i class="fa fa-cloud-sun fa-fw"></i></h1></center><br>
+<center>
+<form action="" style="width:30%;"> 
+	<div class="form-group">
+		<input type="text" class="form-control" id="txt1" placeholder="City Name" style="box-shadow: none;">
+	</div>
+	<div class="form-group">
+		<button type="button" id="myBtn" class="btn btn-lg btn-primary btn-block" onclick="showHint(document.getElementById('txt1').value)" style="box-shadow: none;">Show Weather</button>
+	</div>
+</form>
+<em>Curated By <a href="https://www.linkedin.com/in/mayank-singh-thakur-151010167/" style="color:black;">Mayank Thakur</a></em><br><br><br>
+</center>
+<h4>
+	TODAY'S WEATHER 
+	<i class="fa fa-fw"></i> 
+	<span class="myhead1" id="todayday" style="text-transform: uppercase;"></span> 
+	<i class="fa fa-fw"></i> 
+	<span id="todaydate"></span> - <span id="todaymonth"></span> - <span id="todayyear"></span> 
+	<i class="fa fa-fw"></i> 
+	<span class="myhead1" id="txtHint1" class="txtHint" style="text-transform: uppercase;"></span>
+	<span id="txtHint11"></span> 
+	<b><span class="myhead1" id="txtaqi"></span></b>
+</h4><hr>
+<div class="row box1">
+	<div class="col-md-3 col-xs-3 col-sm-3" style="background:rgba(70,130,180,0.3);border-radius: 0.5rem 0rem 0rem 0.5rem;">
+		<center><h5><span id="txtHint2" class="txtHint">0</span> C <sup>o</sup></h5></center>
+	</div>
+	<div class="col-md-3 col-xs-3 col-sm-3" style="background:rgba(70,130,180,0.5);">
+		<center><h5><b><span id="txtHint3" class="txtHint" style="text-transform: uppercase;"></span></b></h5></center>
+	</div>
+	<div class="col-md-3 col-xs-3 col-sm-3" style="background:rgba(70,130,180,0.7);color:white;">
+		<center><h5><span id="txtHint4" class="txtHint"></span></h5></center>
+	</div>
+	<div class="col-md-3 col-xs-3 col-sm-3" style="background:rgba(70,130,180,0.9);color:white;border-radius: 0rem 0.5rem 0.5rem 0rem;">
+		<center><h5><i class="fas fa-wind fa-fw"></i><span id="txtHint5" class="txtHint"> 0</span> m / sec</h5></center>
+	</div>
+</div>
+<div class="row box2">
+	<div class="col-md-12">
+		<hr>
+		<h4>DAILY FORECAST <span style="font-size: 20px;"> ( Celcius Scale ) </span></h4>
+		<hr>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-3 col-sm-3" style="background:rgba(70,130,180,0.3);border-radius: 0.5rem 0rem 0rem 0.5rem;">
+						<h6 id="date1"><span id="date11" class="mydate"></span> - <span class="todaymonth"></span> - <span class="todayyear"></span></h6><hr>
+						<h6>min - max</h6>
+						<h5><span class="mintemp"></span> <span class="maxtemp"></span></h5><br>
+						<h5><b><span class="mydesc"></span></b></h5>
+					</div>
+					<div class="col-md-3 col-sm-3" style="background:rgba(70,130,180,0.4);">
+						<h6 id="date2"><span id="date21" class="mydate"></span> - <span class="todaymonth"></span> - <span class="todayyear"></span></h6><hr>
+						<h6>min - max</h6>
+						<h5><span class="mintemp"></span> <span class="maxtemp"></span></h5><br>
+						<h5><b><span class="mydesc"></span></b></h5>
+					</div>
+					<div class="col-md-3 col-sm-3" style="background:rgba(70,130,180,0.5);">
+						<h6 id="date3"><span id="date31" class="mydate"></span> - <span class="todaymonth"></span> - <span class="todayyear"></span></h6><hr>
+						<h6>min - max</h6>
+						<h5><span class="mintemp"></span> <span class="maxtemp"></span></h5><br>
+						<h5><b><span class="mydesc"></span></b></h5>
+					</div>
+					<div class="col-md-3 col-sm-3" style="background:rgba(70,130,180,0.6);">
+						<h6 id="date4"><span id="date41" class="mydate"></span> - <span class="todaymonth"></span> - <span class="todayyear"></span></h6><hr>
+						<h6>min - max</h6>
+						<h5><span class="mintemp"></span> <span class="maxtemp"></span></h5><br>
+						<h5><b><span class="mydesc"></span></b></h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-3 col-sm-3" style="background:rgba(70,130,180,0.7);color:white;">
+						<h6 id="date5"><span id="date51" class="mydate"></span> - <span class="todaymonth"></span> - <span class="todayyear"></span></h6><hr>
+						<h6>min - max</h6>
+						<h5><span class="mintemp"></span> <span class="maxtemp"></span></h5><br>
+						<h5><b><span class="mydesc"></span></b></h5>
+					</div>
+					<div class="col-md-3 col-sm-3" style="background:rgba(70,130,180,0.8);color:white;">
+						<h6 id="date6"><span id="date61" class="mydate"></span> - <span class="todaymonth"></span> - <span class="todayyear"></span></h6><hr>
+						<h6>min - max</h6>
+						<h5><span class="mintemp"></span> <span class="maxtemp"></span></h5><br>
+						<h5><b><span class="mydesc"></span></b></h5>
+					</div>
+					<div class="col-md-3 col-sm-3" style="background:rgba(70,130,180,0.9);color:white;">
+						<h6 id="date7"><span id="date71" class="mydate"></span> - <span class="todaymonth"></span> - <span class="todayyear"></span></h6><hr>
+						<h6>min - max</h6>
+						<h5><span class="mintemp"></span> <span class="maxtemp"></span></h5><br>
+						<h5><b><span class="mydesc"></span></b></h5>
+					</div>
+					<div class="col-md-3 col-sm-3" style="background:rgba(70,130,180,1);color:white;border-radius: 0rem 0.5rem 0.5rem 0rem;">
+						<h6 id="date8"><span id="date81" class="mydate"></span> - <span class="todaymonth"></span> - <span class="todayyear"></span></h6><hr>
+						<h6>min - max</h6>
+						<h5><span class="mintemp"></span> <span class="maxtemp"></span></h5><br>
+						<h5><b><span class="mydesc"></span></b></h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+
+// javascript Enter button function ================================
+
+document.onkeypress = function(e){
+  e = e || window.event;
+  if(e.keyCode === 13){
+    event.preventDefault();
+   	document.getElementById("myBtn").onclick();
+  }
+}
+
+// javascript days and moments =====================================
+
+var d = new Date();
+var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+document.getElementById("todayday").innerHTML = days[d.getDay()];
+document.getElementById("todaydate").innerHTML = d.getDate();
+document.getElementById("todaymonth").innerHTML = d.getMonth() + 1;
+document.getElementById("todayyear").innerHTML = d.getFullYear();
+
+x = document.querySelectorAll(".mydate");
+y = document.querySelectorAll(".todaymonth");
+z = document.querySelectorAll(".todayyear");
+
+for(var i=0;i<x.length;i++){
+	var tomorrow = new Date(d);
+	tomorrow.setDate(tomorrow.getDate() + i + 1);
+	x[i].innerHTML = tomorrow.getDate();
+	y[i].innerHTML = tomorrow.getMonth() + 1;
+	z[i].innerHTML = tomorrow.getFullYear();
+}
+
+// javascript Ajax function ============================================
+
+function showHint(str) {
+  var xhttp;
+  if (str.length == 0) { 
+    document.getElementByClass("txtHint").innerHTML = "";
+    return;
+  }
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      city = document.getElementById("txtHint1").innerHTML = JSON.parse(this.responseText).name;
+      document.getElementById("txtHint11").innerHTML = " ( " + JSON.parse(this.responseText).sys.country + " ) ";
+      document.getElementById("txtHint2").innerHTML = JSON.parse(this.responseText).main.temp;
+      document.getElementById("txtHint3").innerHTML = JSON.parse(this.responseText).weather[0].description;
+      document.getElementById("txtHint4").innerHTML = "Clouds - " + JSON.parse(this.responseText).clouds.all;
+      document.getElementById("txtHint5").innerHTML = JSON.parse(this.responseText).wind.speed;
+      lon = JSON.parse(this.responseText).coord.lon;
+      lat = JSON.parse(this.responseText).coord.lat;
+      showDaily(lon,lat);
+      showAqi(city);
+      return;
+    }
+  };
+  xhttp.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=" + str + "&units=metric&appid=4d3a76f532b0aa7d2f90fcbc4daf5cb3", true);
+  xhttp.send();
+}
+
+function showAqi(city){
+	var xhttp;
+  	xhttp = new XMLHttpRequest();
+  	xhttp.onreadystatechange = function() {
+    	if (this.readyState == 4 && this.status == 200) {
+    		var newaqi = JSON.parse(this.responseText).data.aqi;
+    		if(newaqi<=50){
+    			document.getElementById("txtaqi").style.color = "rgb(0,255,0)";
+    			document.getElementById("txtaqi").innerHTML = "<i class='fa fa-fw'></i> AQI - " + newaqi;
+    		}else if(newaqi>=51 && newaqi<=100){
+    			document.getElementById("txtaqi").style.color = "yellow";
+    			document.getElementById("txtaqi").innerHTML = "<i class='fa fa-fw'></i> AQI - " + newaqi;
+    		}else if(newaqi>=101 && newaqi<=150){
+    			document.getElementById("txtaqi").style.color = "orange";
+    			document.getElementById("txtaqi").innerHTML = "<i class='fa fa-fw'></i> AQI - " + newaqi;
+    		}else if(newaqi>=151 && newaqi<=200){
+    			document.getElementById("txtaqi").style.color = "rgb(255,0,0)";
+    			document.getElementById("txtaqi").innerHTML = "<i class='fa fa-fw'></i> AQI - " + newaqi;
+    		}else if(newaqi>=201 && newaqi<=300){
+    			document.getElementById("txtaqi").style.color = "purple";
+    			document.getElementById("txtaqi").innerHTML = "<i class='fa fa-fw'></i> AQI - " + newaqi;
+    		}else if(newaqi>=301 && newaqi<=500){
+    			document.getElementById("txtaqi").style.color = "maroon";
+    			document.getElementById("txtaqi").innerHTML = "<i class='fa fa-fw'></i> AQI - " + newaqi;
+    		}else{
+    			document.getElementById("txtaqi").innerHTML = "";
+    		}
+    	}
+  	};
+  	xhttp.open("GET", "https://api.waqi.info/feed/" + city + "/?token=ca69eabcb39a0de4d887248c69166a84133f455d", true);
+  	xhttp.send();
+}
+
+function showDaily(lon,lat) {
+  var xhttp;
+  m = document.querySelectorAll(".mintemp");
+  n = document.querySelectorAll(".maxtemp");
+  o = document.querySelectorAll(".mydesc");
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    	for(var j=0;j<m.length;j++){
+    		m[j].innerHTML = JSON.parse(this.responseText).daily[j].temp.min + " <sup>o</sup> <b>-</b> ";
+    		n[j].innerHTML = JSON.parse(this.responseText).daily[j].temp.max + " <sup>o</sup> ";
+    		o[j].innerHTML = JSON.parse(this.responseText).daily[j].weather[0].description;
+    	}
+    }
+  };
+  xhttp.open("GET", "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly&units=metric&appid=18c0314bc1695ceebc1b31f9271900ca", true);
+  xhttp.send();
+}
+</script> -->
+
+{% endblock %}

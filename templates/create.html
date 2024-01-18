@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="post">
+        <h2 style="font-weight: 1000;">My Queans App</h2>
+        <hr>
+        <div class="row" style="margin-top: 5%;">
+            <div class="col-md-6 col-sm-12">
+                <div class="card" style="padding: 3%; text-align: justify;">
+                    <!-- <b> Write text context here </b> -->
+                    <textarea name="context" value="context" placeholder="Write text context here" style="padding: 3%; text-align: justify;width: 100%;height: 200px;border: none;outline: none;"></textarea>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="card" style="padding: 3%; text-align: justify;">
+                    <!-- <b> Ask your question here </b> -->
+                    <textarea name="question" placeholder="Ask your quesion here" style="padding: 3%; text-align: justify;width: 100%;height: 200px;border: none;outline: none;"></textarea>
+                </div>
+            </div>
+            <div class="col-md-12" style="margin-top: 3%;">
+                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
